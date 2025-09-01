@@ -208,18 +208,7 @@ __marimo__/
 
 # Data files
 *.root
-/08082025/
-/4AugBlockData/
-/block8b2ccnew/
-/blocks/
-/Data/
-/FDCBpPS/
-/Fitted_Data_Clean_Bp_P/
-/NewOCBlockFiles/
-/Processed_Data/
-/Processed_Data_Clean_Bp_P/
-/Sam_Data/
-/Test_Data/
+*.png
 
 # macOS specific
 .DS_Store
