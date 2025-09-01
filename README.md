@@ -1,30 +1,44 @@
 # Bplus_TimeStability_LHCb
 
 Study of the time stability of the yield ratio between the  
-**$B^+ \to \overline{D}^0\pi^+$** and **$B^+ \to J/\psi K^+$** decay modes in the 2024 LHCb dataset.
+$B^+ \to \overline{D}^0 \pi^+$ and $B^+ \to J/\psi K^+$ decay modes in the **2024 LHCb dataset**.
 
-This project evaluates the feasibility of using these decays for a precise measurement of the branching fraction ratio:
+This work investigates the feasibility of using these decays for a precise determination of the branching fraction ratio
 
 $$
-\frac{\mathcal{B}(B^+ \to \overline{D}^0\pi^+)}{\mathcal{B}(B^+ \to J/\psi K^+)}
+\frac{\mathcal{B}(B^+ \to \overline{D}^0 \pi^+)}{\mathcal{B}(B^+ \to J/\psi K^+)}
 $$
 
-by analyzing the temporal stability of their yield ratio across multiple data-taking blocks and fills.
+focusing on two complementary aspects:
 
-Mass fits are performed using the sum of two Crystal Ball functions.  
-Time stability is evaluated by studying 4 blocks of 2024 run and fills corresponding to each block.   
-and fitting the resulting yield ratios to a constant value using a 0th-degree polynomial.
+### Temporal stability
+- Yield ratios are studied across different **blocks** and **fills** of the 2024 run.  
+- The ratios are fitted to a constant value *(0th-degree polynomial)*.  
+- The reduced chi-squared statistic is used as the stability metric.
 
-The reduced chi-squared statistic, $\chi^2/\text{ndf}$, is used as a stability metric for each block.
+### Branching fraction extraction
+- The absolute value of the ratio is evaluated using **efficiencies from Monte Carlo simulations**.
 
----
+### Additional notes
+- Mass fits are performed using the sum of two Crystal Ball functions.  
+- Separation of $B^+ \to \overline{D}^0 \pi^+$ from $B^+ \to J/\psi K^+$ is achieved with independent Crystal Ball fits.  
+- Stability is checked over four data-taking blocks and their corresponding fills.  
 
-### Key Goals
-- Establish a stable baseline for yield ratio measurements  
-- Validate data quality across 2024 LHCb data-taking blocks  
-- Enable future high-precision normalization for other decay channels  
+### Data structure
 
----
+The repository is organized with an empty `data/` folder, which mirrors the layout exisitng on EOS at  
+`/eos/lhcb/user/y/yghasemi/B2JpsiKs/2024/`.  
+Raw files placed in the correct directories can be used to regenerate all derived datasets.
 
-### License
-This project is licensed under the MIT License.
+```
+data/
+ ├─ processed/              # 1. Files separated based on fill and block, first step of cleaning
+ ├─ processed_clean_bp_p/   # 2. same files after duplicate-momentum cleaning
+ ├─ fitted_data/            # 3. mass-fit outputs and RooFit workspaces
+ ├─ monte_carlo/            # MC.1. Original MC data
+ ├─ monte_carlo_processed/  # MC.2. Merged MC data, to form blocks 
+ └─ real_5to8_raw/          # 0. Raw files based on the given naming for blocks 5 to 8
+```
+Each file contains a corresponding ```md``` block with the explanation.
+
+**License**: MIT
