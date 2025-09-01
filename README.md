@@ -41,4 +41,25 @@ data/
 ```
 Each file contains a corresponding ```md``` block with the explanation.
 
+Codes descriptions for External Users:
+- Blocks_Fitting.ipynb: Performs block-level mass fitting analysis on B+ meson decay data. Implements simultaneous fits for B+ → D⁰π+ and combined B+ → J/ψK+ + J/ψπ+ channels using double Crystal Ball PDFs with exponential backgrounds. Processes multiple ROOT files corresponding to different data-taking periods (blocks), extracting yields, fit parameters, and quality matrices.
+
+- Blocks_Yield_Stability.ipynb: Analyzes temporal stability of B+ yields across different data-taking blocks. Examines systematic variations in signal yields, background fractions, and fit quality metrics as a function of time/block number.
+
+- Branching_Fraction_Calculation.ipynb: Computes branching fraction ratios BF(B+ → D⁰π+)/BF(B+ → J/ψK+) using fitted yields from the mass fitting analysis. Implements proper error propagation, efficiency corrections, and systematic uncertainty evaluation. Compares results with world averages (PDG) and other experiments (Belle, BaBar).
+
+- Fills_Fitting.ipynb: Performs fill-level mass fitting analysis - a more granular analysis than block-level fitting. Each fill represents a shorter data-taking period within a block, providing higher time resolution for stability studies. Uses similar fitting procedures as Blocks_Fitting.ipynb but processes individual fills.
+
+- MC_File_Merger.ipynb: Handles Monte Carlo data preprocessing by merging multiple MC ROOT files into consolidated datasets. Ensures proper event selection, applies necessary cuts, and organizes MC samples by decay mode (B2OC, B2CC, J/ψπ). Critical for preparing clean MC samples used in parameter extraction and systematic studies.
+
+- MC_Fitting.ipynb: Performs Monte Carlo mass fitting to extract signal shape parameters (Crystal Ball parameters, resolutions, tail parameters) from pure MC samples without background contamination. These parameters are then used to constrain real data fits, improving stability and reducing systematic uncertainties.
+
+
+
+
+
+
+
+
+
 **License**: MIT
