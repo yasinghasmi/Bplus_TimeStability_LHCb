@@ -209,6 +209,8 @@ __marimo__/
 # Data files
 *.root
 *.png
+*.html
+*.bak
 
 # macOS specific
 .DS_Store
