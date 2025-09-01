@@ -33,12 +33,34 @@ Raw files placed in the correct directories can be used to regenerate all derive
 ```
 data/
  ├─ processed/              # 1. Files separated based on fill and block, first step of cleaning
- ├─ processed_clean_bp_p/   # 2. same files after duplicate-momentum cleaning
- ├─ fitted_data/            # 3. mass-fit outputs and RooFit workspaces
+ ├─ processed_clean_bp_p/   # 2. same files after duplicate-momentum cleaning, after running the fitting
+ |                            code it will contain the fit result as well.
  ├─ monte_carlo/            # MC.1. Original MC data
  ├─ monte_carlo_processed/  # MC.2. Merged MC data, to form blocks 
  └─ real_5to8_raw/          # 0. Raw files based on the given naming for blocks 5 to 8
 ```
-Each file contains a corresponding ```md``` block with the explanation.
+Each file comes with its own accompanying md block explaining the details, but here’s a clearer overview of their purpose:
+
+- split_fills_clean.ipynb: The first step of data preparation. It takes the raw data, splits it into block- and fill-level files, and removes bad runs.
+
+- clean_bp_p_duplicates.ipynb: Uses the split block/fill files to clean up duplicate candidates. It clusters entries with the same event number based on the Bp_P branch and keeps only one representative per cluster.
+
+- blocks_fitting.ipynb: Performs block-level mass fits for B⁺ decays. It applies simultaneous fits to B⁺ → D⁰π⁺ and the combined B⁺ → J/ψK⁺ + J/ψπ⁺ channels using double Crystal Ball functions with exponential backgrounds. It processes multiple ROOT files from different data-taking blocks and extracts yields, fit parameters, and fit quality metrics. This code UPDATEs the existing files in the same directory.
+
+- fills_fitting.ipynb: Similar to blocks_fitting.ipynb, but at the fill level. Since a fill is a shorter data-taking period within a block, this analysis provides finer time resolution for stability studies.
+
+- blocks_yield_stability.ipynb: Studies how B⁺ yields evolve over different data-taking blocks. It looks at trends in signal yields, background fractions, and fit quality over time.
+
+- MC_file_merger.ipynb: Prepares Monte Carlo samples by merging multiple ROOT files into unified datasets. It applies event selection and cuts, and organizes the data by decay channel (B2OC, B2CC, J/ψπ). This creates clean MC samples for later parameter extraction and systematic studies.
+
+- MC_fitting.ipynb: Fits the Monte Carlo datasets to extract the signal shape parameters (Crystal Ball means, widths, and tail parameters). Since MC samples are free of background, these parameters can later be used to constrain fits in real data, improving robustness and reducing systematics.
+
+- efficiency_ratio_block.ipynb: Plots efficiency ratios for each block, using values manually provided from branching_ratio_calculation.ipynb.
+
+- nPV_per_fill.ipynb: Checks the number of primary vertices in each fill. It produces plots of the average and standard deviation of nPV across blocks.
+
+- branching_ratio_calculation.ipynb: Calculates the branching ratio and its uncertainties (both statistical and external). It also computes yield and efficiency ratios based on the fitted data.
+
+- branching_fraction_plotting.ipynb: Compares the branching fraction results against world averages (PDG) and measurements from other experiments such as Belle and BaBar.
 
 **License**: MIT
