@@ -14,13 +14,7 @@ focusing on two complementary aspects:
 ### Temporal stability
 - Yield ratios are studied across different **blocks** and **fills** of the 2024 run.  
 - The ratios are fitted to a constant value *(0th-degree polynomial)*.  
-- The reduced chi-squared statistic  
-
-  $$
-  \chi^2/\text{ndf}
-  $$  
-
-  is used as the stability metric.
+- The reduced chi-squared statistic is used as the stability metric.
 
 ### Branching fraction extraction
 - The absolute value of the ratio is evaluated using **efficiencies from Monte Carlo simulations**.
@@ -32,19 +26,19 @@ focusing on two complementary aspects:
 
 ### Data structure
 
-The repository is organized with an empty `data/` folder, which mirrors the layout used on EOS at  
+The repository is organized with an empty `data/` folder, which mirrors the layout exisitng on EOS at  
 `/eos/lhcb/user/y/yghasemi/B2JpsiKs/2024/`.  
 Raw files placed in the correct directories can be used to regenerate all derived datasets.
 
 ```
 data/
- ├─ processed/              # original input ROOT files (raw analysis data)
- ├─ processed_clean_bp_p/   # same files after duplicate-momentum cleaning
- ├─ fitted_data/            # mass-fit outputs and RooFit workspaces
- ├─ monte_carlo/            # simulated datasets for efficiency evaluation
- └─ real_5to8_raw/          # raw sub-samples of 2024 real data (fills 5–8)
+ ├─ processed/              # 1. Files separated based on fill and block, first step of cleaning
+ ├─ processed_clean_bp_p/   # 2. same files after duplicate-momentum cleaning
+ ├─ fitted_data/            # 3. mass-fit outputs and RooFit workspaces
+ ├─ monte_carlo/            # MC.1. Original MC data
+ ├─ monte_carlo_processed/  # MC.1. Merged MC data, to form blocks 
+ └─ real_5to8_raw/          # 0. Raw files based on the given naming for blocks 5 to 8
 ```
-
-Each subfolder is automatically created by the scripts when needed, and the contents are regenerated from upstream data.  
+Each file contains a corresponding ```md``` block with the explanation.
 
 **License**: MIT
