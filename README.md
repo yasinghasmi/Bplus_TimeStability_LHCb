@@ -41,8 +41,9 @@ data/
  ├─ monte_carlo_processed/  # MC.2. Merged MC data, to form blocks 
  └─ block5_analysis/        # 3. This file is used for block 5 investigation analysis
     └─ outputs                that is epxlained more deeply in the md of file. The data
-       ├─ fit_plots           beofre fitting should be places here (next to outputs), and result
-       └─ histograms          of analysis will be saved in the output file, in two subdirectories.
+       ├─ fit_plots           beofre fitting should be places here (next to outputs), and 
+       └─ histograms          result of analysis will be saved in the output file, in two
+                              subdirectories
 ```
 
 Each file comes with its own accompanying md block explaining the details, but here’s a clearer overview of their purpose:
