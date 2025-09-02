@@ -32,13 +32,17 @@ Raw files placed in the correct directories can be used to regenerate all derive
 
 ```
 data/
+ ├─ real_5to8_raw/          # 0. Raw files based on the given naming for blocks 5 to 8
  ├─ processed/              # 1. Files separated based on fill and block, first step 
  |                            of cleaning.
  ├─ processed_clean_bp_p/   # 2. same files after duplicate-momentum cleaning, after running 
  |                            the fitting code it will contain the fit result as well.
  ├─ monte_carlo/            # MC.1. Original MC data
  ├─ monte_carlo_processed/  # MC.2. Merged MC data, to form blocks 
- └─ real_5to8_raw/          # 0. Raw files based on the given naming for blocks 5 to 8
+ └─ block5_analysis/        # 3. This file is used for block 5 investigation analysis
+    └─ outputs                that is epxlained more deeply in the md of file. The data
+       ├─ fit_plots           beofre fitting should be places here (next to outputs), and result
+       └─ histograms          of analysis will be saved in the output file, in two subdirectories.
 ```
 
 Each file comes with its own accompanying md block explaining the details, but here’s a clearer overview of their purpose:
@@ -57,12 +61,16 @@ Each file comes with its own accompanying md block explaining the details, but h
 
 - **MC_fitting.ipynb**: Fits the Monte Carlo datasets to extract the signal shape parameters (Crystal Ball means, widths, and tail parameters). Since MC samples are free of background, these parameters can later be used to constrain fits in real data, improving robustness and reducing systematics.
 
+- **branching_ratio_block_plotting.ipynb**: Plots the branching ratio and total error (statistical + external) for all 4 blocks.
+
 - **efficiency_ratio_block.ipynb**: Plots efficiency ratios for each block, using values manually provided from branching_ratio_calculation.ipynb.
 
 - **nPV_per_fill.ipynb**: Checks the number of primary vertices in each fill. It produces plots of the average and standard deviation of nPV across blocks.
 
 - **branching_ratio_calculation.ipynb**: Calculates the branching ratio and its uncertainties (both statistical and external). It also computes yield and efficiency ratios based on the fitted data.
 
-- **branching_ratio_plotting.ipynb**: Compares the branching fraction results against world averages (PDG) and measurements from other experiments such as Belle and BaBar.
+- **branching_ratio_vs_world_plot.ipynb**: Compares the branching fraction results against world averages (PDG) and measurements from other experiments such as Belle and BaBar.
+
+- **block5_analysis.ipynb**: Loads Block 5 and per fill ROOT data, performs B⁺ mass fits (2CB+exp) to write sWeights, computes χ² diagnostics, plots per fill normalized PID histograms, and generates a by fill signal/background table and graph.
 
 **License**: MIT
